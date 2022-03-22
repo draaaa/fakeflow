@@ -5,8 +5,8 @@ for Font, _ in next, Drawing.Fonts do
 	table.insert(Fonts, Font);
 end;
 
-local TestWindow = Library:CreateWindow('window title');
-Library:SetWatermark('watermark!!! (hi)');
+local TestWindow = Library:CreateWindow('flow (experimental)');
+Library:SetWatermark('flow (experimental)');
 Library:Notify('Loading UI...');
 
 local LegitTab = TestWindow:AddTab('Legit');
@@ -30,10 +30,10 @@ local LegitSettings = lAimbotSettings:AddTab('Aimbot Settings');
 LegitSettings:AddSlider('AimTime', { Text = 'Smoothing', Default = 0, Min = 0, Max = 2000, Rounding = 0, Suffix = 'ms' });
 LegitSettings:AddToggle('AimbotClosest', { Text = 'Aim at Closest Part' });
 
-local VisualsTab = TestWindow:AddTab('Visuals');
+local VisualsTab = TestWindow:AddTab('visuals');
 
 local ESP = VisualsTab:AddLeftTabbox();
-local EnemyESP = ESP:AddTab('Enemy ESP');
+local EnemyESP = ESP:AddTab('enemy ESP');
 EnemyESP:AddToggle('Nametags', { Text = 'Nametags' }):AddColorPicker('nColor', { Default = Color3.new(1, 1, 1) });
 EnemyESP:AddToggle('Distance', { Text = 'Display Distance' });
 EnemyESP:AddToggle('Boxes', { Text = 'Boxes' }):AddColorPicker('vbColor', { Default = Color3.new(0, 1, 0) }):AddColorPicker('nvbColor', { Default = Color3.new(1, 0, 0) });
@@ -60,7 +60,7 @@ local function SetDefault()
     Options.FontColor:SetValueRGB(Color3.fromRGB(255, 255, 255));
     Options.MainColor:SetValueRGB(Color3.fromRGB(28, 28, 28));
     Options.BackgroundColor:SetValueRGB(Color3.fromRGB(20, 20, 20));
-    Options.AccentColor:SetValueRGB(Color3.fromRGB(0, 85, 255));
+    Options.AccentColor:SetValueRGB(Color3.fromRGB(255, 100, 0));
     Options.OutlineColor:SetValueRGB(Color3.fromRGB(50, 50, 50));
     Toggles.Rainbow:SetValue(false);
 
@@ -68,14 +68,13 @@ local function SetDefault()
 end;
 
 local Theme = SettingsTab:AddLeftGroupbox('Theme');
-Theme:AddLabel('Background Color'):AddColorPicker('BackgroundColor', { Default = Library.BackgroundColor });
-Theme:AddLabel('Main Color'):AddColorPicker('MainColor', { Default = Library.MainColor });
-Theme:AddLabel('Accent Color'):AddColorPicker('AccentColor', { Default = Library.AccentColor });
-Theme:AddToggle('Rainbow', { Text = 'Rainbow Accent Color' });
-Theme:AddLabel('Outline Color'):AddColorPicker('OutlineColor', { Default = Library.OutlineColor });
-Theme:AddLabel('Font Color'):AddColorPicker('FontColor', { Default = Library.FontColor });
-Theme:AddButton('Default Theme', SetDefault);
-Theme:AddToggle('Keybinds', { Text = 'Show Keybinds Menu', Default = true }):OnChanged(function()
+Theme:AddLabel('background color'):AddColorPicker('BackgroundColor', { Default = Library.BackgroundColor });
+Theme:AddLabel('main color'):AddColorPicker('MainColor', { Default = Library.MainColor });
+Theme:AddLabel('accent color'):AddColorPicker('AccentColor', { Default = Library.AccentColor });
+Theme:AddToggle('rainbow', { Text = 'Rainbow Accent Color' });
+Theme:AddLabel('outline color'):AddColorPicker('OutlineColor', { Default = Library.OutlineColor });
+Theme:AddLabel('font color'):AddColorPicker('FontColor', { Default = Library.FontColor });
+Theme:AddToggle('keybinds', { Text = 'show keybinds menu', Default = true }):OnChanged(function()
     Library.KeybindFrame.Visible = Toggles.Keybinds.Value;
 end);
 Theme:AddToggle('Watermark', { Text = 'Show Watermark', Default = true }):OnChanged(function()
